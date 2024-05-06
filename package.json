@@ -1,0 +1,28 @@
+{
+  "name": "final_project",
+  "version": "1.0.0",
+  "description": "Chealyfey Vutha's Final Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "dev": "nodemon server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Chealyfey Vutha",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "mongodb": "^6.5.0",
+    "mongoose": "^8.3.2",
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "uuid": "^8.3.2",
+    "date-fns": "^2.23.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "engines": {
+    "node": "^16.0.0"
+  }
+}
