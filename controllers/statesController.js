@@ -4,20 +4,6 @@ const path = require('path');
 const State = require('../model/State');
 const statesData = require('../statesData.json');
 
-// Middleware function to verify the validity of the passed state abbreviation parameter
-const validateStateCode = (req, res, next) => {
-    const stateCode = req.params.stateCode.toUpperCase(); // Get state abbreviation parameter
-    const stateCodes = statesData.map(state => state.code); // Get state codes from JSON data
-
-    if (!stateCodes.includes(stateCode)) {
-        return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
-    }
-
-    // Add stateCode to request object for future use
-    req.stateCode = stateCode;
-    next();
-};
-
 // Route handler to get all state entries along with fun facts
 const getAllStates = async (req, res) => {
     try {
@@ -257,9 +243,23 @@ const deleteFunFact = async (req, res) => {
     }
 };
 
+// Middleware function to verify the validity of the passed state abbreviation parameter
+const validateStateCode = (req, res, next) => {
+    const stateCode = req.params.stateCode.toUpperCase(); // Get state abbreviation parameter
+    const stateCodes = statesData.map(state => state.code); // Get state codes from JSON data
+
+    if (!stateCodes.includes(stateCode)) {
+        return res.status(400).json({ 'message': 'Invalid state abbreviation parameter' });
+    }
+
+    // Add stateCode to request object for future use
+    req.stateCode = stateCode;
+    next();
+};
+
+
 // Exporting route handlers
 module.exports = {
-    validateStateCode,
     getAllStates,
     getState,
     getFunFact,
@@ -269,5 +269,6 @@ module.exports = {
     getStateNickname,
     getStateCapital,
     updateFunFact,
-    deleteFunFact
+    deleteFunFact,
+    validateStateCode
 };
