@@ -244,7 +244,7 @@ const deleteFunFact = async (req, res) => {
 };
 
 // Middleware function to verify the validity of the passed state abbreviation parameter
-const validateStateCode = (req, res, next) => {
+const verifyStates = (req, res, next) => {
     const stateCode = req.params.stateCode.toUpperCase(); // Get state abbreviation parameter
     const stateCodes = statesData.map(state => state.code); // Get state codes from JSON data
 
@@ -270,5 +270,5 @@ module.exports = {
     getStateCapital,
     updateFunFact,
     deleteFunFact,
-    validateStateCode
+    verifyStates
 };

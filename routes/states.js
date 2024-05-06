@@ -7,7 +7,7 @@ router.get('/', statesController.getAllStates);
 
 // Route to handle fun facts for a particular state
 router.route('/:stateCode/funfact')
-    .all(statesController.validateStateCode) // Middleware to validate state code validity
+    .all(statesController.verifyStates) // Middleware to validate state code validity
     .get(statesController.getFunFact) // Get fun facts for the state
     .post(statesController.createNewFunFact) // Create new fun fact for the state
     .patch(statesController.updateFunFact) // Update existing fun fact for the state
@@ -15,27 +15,27 @@ router.route('/:stateCode/funfact')
 
 // Route to get the state capital
 router.get('/:stateCode/capital', 
-    statesController.validateStateCode, // Middleware to validate state code validity
+    statesController.verifyStates, // Middleware to validate state code validity
     statesController.getStateCapital); // Get the capital of the state
 
 // Route to get the state nickname
 router.get('/:stateCode/nickname', 
-    statesController.validateStateCode, // Middleware to validate state code validity
+    statesController.verifyStates, // Middleware to validate state code validity
     statesController.getStateNickname); // Get the nickname of the state
 
 // Route to get the state population
 router.get('/:stateCode/population',
-    statesController.validateStateCode, // Middleware to validate state code validity
+    statesController.verifyStates, // Middleware to validate state code validity
     statesController.getStatePopulation); // Get the population of the state
 
 // Route to get the state admission date
 router.get('/:stateCode/admission',
-    statesController.validateStateCode, // Middleware to validate state code validity
+    statesController.verifyStates, // Middleware to validate state code validity
     statesController.getStateAdmission); // Get the admission date of the state
 
 // Route to get single state data
 router.route('/:stateCode')
-    .all(statesController.validateStateCode) // Middleware to validate state code validity
+    .all(statesController.verifyStates) // Middleware to validate state code validity
     .get(statesController.getState); // Get data of a single state
 
 module.exports = router;
